@@ -1,9 +1,12 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
+import DetailedDoctorverify from './Pages/Components/AdminSide/adminPages/DetailedDoctorverify/DetailedDoctorverify';
 import EditUsers from './Pages/Components/AdminSide/adminPages/EditUsers/EditUsers';
 import ShowAllUsers from './Pages/Components/AdminSide/adminPages/ShowAllUsers/ShowAllUsers';
+import VerifyDoctor from './Pages/Components/AdminSide/adminPages/verifyDoctor/VerifyDoctor';
 import Notifications from './Pages/Components/AdminSide/Notifications/Notifications';
 import ApplyDoctor from './Pages/Components/UsersSide/applyDoctor/ApplyDoctor';
+import DoctorProfilePage from './Pages/DoctorPages/DoctorProfilePage/DoctorProfilePage';
 
 import HomePage from './Pages/HomePage/HomePage';
 import Login from './Pages/LoginPage/Login';
@@ -53,7 +56,6 @@ function Routing() {
             </ProtectedRoutes>
           }
         />
-
         <Route
           path="/notifications"
           element={
@@ -62,7 +64,6 @@ function Routing() {
             </ProtectedRoutes>
           }
         />
-
         <Route
           path="/showallusers"
           element={
@@ -71,12 +72,37 @@ function Routing() {
             </ProtectedRoutes>
           }
         />
-
         <Route
           path="/editusers/:id"
           element={
             <ProtectedRoutes>
-              <EditUsers/>
+              <EditUsers />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/verifyDoctor"
+          element={
+            <ProtectedRoutes>
+              <VerifyDoctor />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/detailedDoctorsVerifyPage/:id"
+          element={
+            <ProtectedRoutes>
+              <DetailedDoctorverify />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/Doctor/doctorProfilePage/:id"
+          element={
+            <ProtectedRoutes>
+              <DoctorProfilePage/>
             </ProtectedRoutes>
           }
         />

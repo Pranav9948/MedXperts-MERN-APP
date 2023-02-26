@@ -18,6 +18,7 @@ import {
   adminUpdateUsersReducers,
   adminBlockUsersReducers,
   adminunBlockUsersReducers,
+  adminListDoctorsReducers,
 } from "./redux/reducers/adminReducers";
 
 
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   adminUpdateUsers: adminUpdateUsersReducers,
   adminBlockUsers: adminBlockUsersReducers,
   admin_UnBlockUsers: adminunBlockUsersReducers,
+  admin_Doctors_ListShow :adminListDoctorsReducers,
 });
 
 

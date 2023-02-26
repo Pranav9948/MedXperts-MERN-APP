@@ -19,7 +19,10 @@ import {
   USERS_BLOCK_SUCCESS,
   USERS_UNBLOCK_FAIL,
   USERS_UNBLOCK_REQUEST,
-  USERS_UNBLOCK_SUCCESS
+  USERS_UNBLOCK_SUCCESS,
+  LIST_DOCTORS_REQUEST,
+  LIST_DOCTORS_SUCCESS,
+  LIST_DOCTORS_FAIL
 } from "../constants/adminConstant";
 
 export const adminShowAllUserz = () => async (dispatch, getState) => {
@@ -243,4 +246,42 @@ export const adminUpdateUserz =
       });
     }
   };
+
+
+
+
+   export const adminListDoctors = (userId) => async (dispatch, getState) => {
+     try {
+       console.log("xc");
+
+       dispatch({
+         type: LIST_DOCTORS_REQUEST,
+       });
+
+       const config = {
+         headers: {
+           Authorization: "Bearer " + localStorage.getItem("doctorAppToken"),
+         },
+       };
+
+
+       const { data } = await axios.get(`/api/admin/verifyDoctor`, config);
+
+       dispatch({
+         type:LIST_DOCTORS_SUCCESS,
+         payload: data,
+       });
+     } catch (error) {
+       const message =
+         error.response && error.response.data.message
+           ? error.response.data.message
+           : error.message;
+       dispatch({
+         type: LIST_DOCTORS_FAIL,
+         payload: message,
+       });
+     }
+   };
+
+
 

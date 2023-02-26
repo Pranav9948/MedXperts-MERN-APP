@@ -6,6 +6,8 @@ import { Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../../../../redux/actions/loginAction";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function Notifications() {
   const userInfo = useSelector((state) => state.userInfo);
@@ -119,7 +121,15 @@ const config = {
                         className="card p-3"
                         onClick={() => notification.onClickPath}
                       >
-                        <div className="card-text">{notification.message} </div>
+                        <Link to={`/verifyDoctor`}>
+                          {" "}
+                          <div className="card-text">
+                            {notification.message}
+                            <Button variant="warning" className="ms-5">
+                              See All Doctor Request
+                            </Button>{" "}
+                          </div>
+                        </Link>
                       </div>
                     );
                   })

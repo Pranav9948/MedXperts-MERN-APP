@@ -2,7 +2,8 @@ const express=require("express")
 const app=express()
  var bodyParser = require('body-parser');
 const userRoutes = require("../Backend/routes/userRoutes");
-const adminRoutes=require('../Backend/routes/adminRoutes')
+const adminRoutes=require('../Backend/routes/adminRoutes');
+const doctorRoutes = require("../Backend/routes/doctorRoutes");
 
 require("dotenv").config();
 
@@ -18,7 +19,7 @@ app.use(express.json())
 
 app.use('/api/users',userRoutes)
 app.use("/api/admin",adminRoutes);
-
+app.use("/api/doctors",doctorRoutes);
 
 
 

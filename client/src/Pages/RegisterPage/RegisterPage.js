@@ -30,6 +30,7 @@ const navigate=useNavigate()
       try {
         const { data } = await axios.post("/api/users/register", values);
 
+
         if (data.success) {
           toast.success(data.message);
           navigate('/login')

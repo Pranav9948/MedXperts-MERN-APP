@@ -105,9 +105,9 @@ router.post("/apply-for-DoctorAccount", protect, async (req, res) => {
   try {
     console.log("x", req.body);
     const newDoctor = new Doctors({
-      ...req.body,
+      ...req.body, 
       status: "pending",
-      userId: "123",
+      userId: req.userId,
     });
 
     const doctorCreated = await newDoctor.save();

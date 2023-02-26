@@ -15,7 +15,10 @@ import {
   USERS_BLOCK_FAIL,
   USERS_UNBLOCK_REQUEST,
   USERS_UNBLOCK_FAIL,
-  USERS_UNBLOCK_SUCCESS
+  USERS_UNBLOCK_SUCCESS,
+  LIST_DOCTORS_REQUEST,
+  LIST_DOCTORS_SUCCESS,
+  LIST_DOCTORS_FAIL
 } from "../constants/adminConstant";
 
 export const adminShowUsersReducers = (state = { users: {} }, action) => {
@@ -115,6 +118,23 @@ export const adminunBlockUsersReducers = (state = {}, action) => {
     case USERS_UNBLOCK_SUCCESS:
       return { loading: false, unblockedUser: action.payload };
     case USERS_UNBLOCK_FAIL:
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+
+
+
+export const adminListDoctorsReducers = (state = {}, action) => {
+  switch (action.type) {
+    case LIST_DOCTORS_REQUEST:
+      return { loading: true };
+    case LIST_DOCTORS_SUCCESS:
+      return { loading: false, Doctors: action.payload };
+    case LIST_DOCTORS_FAIL:
       return { loading: false, error: action.payload };
 
     default:

@@ -1,0 +1,133 @@
+.sidebarz{
+
+     background-color:#FFC72C;
+    height: 96vh;
+    width: 15%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px 0px 10px 10px;
+    color:white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    
+   
+    
+
+}
+
+.headerz{
+
+    background-color: white;
+    height: 15vh;
+    width: 100%;
+    border:  1px solid gray;
+    margin-bottom: 10px;
+
+    
+
+}
+
+.mainBody{
+
+    background-color: white;
+    height: 79vh;
+    width: 100%;
+}
+
+.content{
+
+    height: 96vh;
+    width: 83%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px 10px 10px 0px;
+    margin-left: 10px;
+}
+
+
+
+
+/*  side-bar styling starts */
+
+
+.sidebarHeadingz img {
+
+    width: 100px;
+    height: 110px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.sidebarIcon{
+
+     
+    margin-bottom: 30px;
+    border-radius: 5px;
+    height: 80px;
+    
+    
+    
+
+}
+
+.sidebarIcon:hover{
+
+    background-color:#FF7F50;
+}
+
+
+.sidebarIcon i  {
+
+     vertical-align: middle;
+     margin-bottom: 10px;
+     margin-top: 10px;
+     font-size: 20px;
+     color: white !important;
+}
+
+.sidebarIcon span{
+
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white !important;
+}
+
+
+
+
+.highlight{
+
+    background-color: #F08080;
+}
+
+/* Header styling starts */
+
+ .headerz{
+
+    display: flex;
+    justify-content:  space-around;
+    align-items: center;
+    background-color: #FFD700;
+    
+
+ } 
+
+
+.header_Icon i{
+
+    margin-right:-7 00px;
+    font-size: 30px;
+    color: white;
+
+    
+}
+
+.userName{
+
+    margin-right: 80px;
+    font-size: 30px;
+    color: white;
+}
+

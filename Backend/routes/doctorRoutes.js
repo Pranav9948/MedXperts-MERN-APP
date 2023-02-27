@@ -9,6 +9,7 @@ const Users = require("../models/userModel");
 router.get("/getDoctorProfile/:id", async (req, res) => {
   try {
 
+    console.log("888888");
 const doctorId=req.params.id
 
 
@@ -31,23 +32,42 @@ const doctorId=req.params.id
 
 
 
-router.patch("/getDoctorProfile/:id", async (req, res) => {
+router.post("/getDoctorProfile/:id", async (req, res) => {
 
   try {
     const doctorId = req.params.id;
+    console.log("2244",doctorId)
 
-    console.log("2244", req.body);
-    const data = req.body;
+    
 
-    Doctors.findByIdAndUpdate(doctorId, data, function (err, docs) {
+    Doctors.findOne({_id:doctorId}, function (err, docs) {
       if (err) {
         console.log(err);
       } else {
-        console.log("Updated User : ", docs);
+        console.log("Resultz : ", docs);
       }
     });
 
-    const updatedDoctor = await Doctors.find({ _id: doctorId });
+    const datazz = req.body.values;
+
+    console.log("4444",datazz);
+
+    //   Doctors.findByIdAndUpdate(doctorId,datazz, function (err, docs) {
+    //   if (err) {
+    //     console.log(err);
+    //   } else { 
+    //     console.log("Updated User : ", docs);
+    //   }
+    // });
+
+
+
+  const updatedDoc = await Doctors.findOneAndUpdate({ _id: doctorId},datazz);
+
+console.log("66666",updatedDoc)
+
+    const updatedDoctor = await Doctors.findOne({ _id: doctorId });
+    console.log("777",updatedDoctor);
 
     res.status(200).send({
       message: "Doctor updated successfully",

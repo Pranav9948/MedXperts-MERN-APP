@@ -13,6 +13,10 @@ import Login from './Pages/LoginPage/Login';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
 import ProtectedRoutes from './Routes/ProtectedRoutes';
 import PublicRoutes from './Routes/PublicRoutes';
+import ApplyDocForm from './Users/ApplyDoctorForm.js/ApplyDocForm';
+import BookAppointment from './Users/BookAppointment/BookAppointment';
+import UsersLayout from './Users/usersLayout/UsersLayout';
+import ViewAllDoctors from './Users/ViewAllDoctors/ViewAllDoctors';
 
 
 function Routing() {
@@ -52,7 +56,7 @@ function Routing() {
           path="/apply-doctor"
           element={
             <ProtectedRoutes>
-              <ApplyDoctor />
+              <ApplyDocForm />
             </ProtectedRoutes>
           }
         />
@@ -88,7 +92,6 @@ function Routing() {
             </ProtectedRoutes>
           }
         />
-
         <Route
           path="/detailedDoctorsVerifyPage/:id"
           element={
@@ -97,12 +100,36 @@ function Routing() {
             </ProtectedRoutes>
           }
         />
-
         <Route
           path="/Doctor/doctorProfilePage/:id"
           element={
             <ProtectedRoutes>
-              <DoctorProfilePage/>
+              <DoctorProfilePage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/usersHome"
+          element={
+            <ProtectedRoutes>
+              <UsersLayout />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/viewalldoctors"
+          element={
+            <ProtectedRoutes>
+              <ViewAllDoctors />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/bookDoctorAppointment/:id"  
+          element={
+            <ProtectedRoutes>
+              <BookAppointment />
             </ProtectedRoutes>
           }
         />

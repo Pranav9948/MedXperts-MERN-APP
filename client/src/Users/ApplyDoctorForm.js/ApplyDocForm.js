@@ -133,6 +133,10 @@ const props = {
             name="control-hooks"
             onFinish={onFinish}
             layout="vertical"
+
+          
+         
+          
           >
             <Row className="mt-4">
               <Col md={6} className="formvalues">
@@ -236,11 +240,7 @@ const props = {
                 <Form.Item
                   name="ProfileImage"
                   label="ProfileImage"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                 
                 >
                   <Upload {...props}>
                     <Button

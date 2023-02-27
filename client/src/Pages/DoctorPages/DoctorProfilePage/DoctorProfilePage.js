@@ -24,13 +24,6 @@ function DoctorProfilePage() {
 
 
 
-
-
-
-
-
-
-
   const { TextArea } = Input;
 
   const loading = useSelector((state) => state.general.loading);
@@ -86,6 +79,7 @@ function DoctorProfilePage() {
       },
     };
  
+    
 
         const { data } = await axios.post(
           `/api/doctors/getDoctorProfile/${id}`,
@@ -163,19 +157,20 @@ function DoctorProfilePage() {
               <h5 className="pt-5 ps-5 fw-bold fs-2">Personal Informations</h5>
 
               <Form
-                initialValues={doctorDetails}
                 form={form}
                 name="control-hooks"
                 onFinish={onFinish}
                 layout="vertical"
               >
                 <Row className="mt-4">
+
+
+              
                   <Col md={6} className="formvalues">
-                    <Form.Item
-                      name="firstName"
-                      label="firstName"
-                      
-                    >
+                    <h5 className="mt-3 ms-2 me-3">
+                      {doctorDetails.firstName}
+                    </h5>
+                    <Form.Item name="firstName" label="firstName">
                       <Input
                         style={{
                           width: "300px",
@@ -183,11 +178,11 @@ function DoctorProfilePage() {
                           height: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">{doctorDetails.firstName}</h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">{doctorDetails.lastName}</h5>
                     <Form.Item
                       name="lastName"
                       label="lastName"
@@ -203,11 +198,11 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">{doctorDetails.lastName}</h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">{doctorDetails.email}</h5>
                     <Form.Item
                       name="email"
                       label="email"
@@ -223,11 +218,11 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">{doctorDetails.email}</h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">{doctorDetails.address}</h5>
                     <Form.Item
                       name="address"
                       label="address"
@@ -242,13 +237,15 @@ function DoctorProfilePage() {
                       ]}
                     >
                       <TextArea rows={4} />
-                      <h5 className="mt-3 ms-2">{doctorDetails.address}</h5>
                     </Form.Item>
                   </Col>
                 </Row>
 
                 <Row className="mt-2">
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">
+                      {doctorDetails.phoneNumber}
+                    </h5>
                     <Form.Item
                       name="phoneNumber"
                       label="phoneNumber"
@@ -264,20 +261,11 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">{doctorDetails.phoneNumber}</h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
-                    <Form.Item
-                      name="ProfileImage"
-                      label="ProfileImage"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
-                    >
+                    <Form.Item name="ProfileImage" label="ProfileImage">
                       <Upload {...props}>
                         <Button
                           icon={<UploadOutlined />}
@@ -300,6 +288,9 @@ function DoctorProfilePage() {
                   </h3>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">
+                      {doctorDetails.feePerConsultation}
+                    </h5>
                     <Form.Item
                       name="feePerConsultation"
                       label="feePerConsultation"
@@ -315,13 +306,11 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">
-                        {doctorDetails.feePerConsultation}
-                      </h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">{doctorDetails.experience}</h5>
                     <Form.Item
                       name="experience"
                       label="experience"
@@ -337,13 +326,15 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">{doctorDetails.experience}</h5>
                     </Form.Item>
                   </Col>
                 </Row>
 
                 <Row className="mt-2">
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">
+                      {doctorDetails.specialization}
+                    </h5>
                     <Form.Item
                       name="specialization"
                       label="specialization"
@@ -359,13 +350,13 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">
-                        {doctorDetails.specialization}
-                      </h5>
                     </Form.Item>
                   </Col>
 
                   <Col md={6} className="formvalues">
+                    <h5 className="mt-3 ms-2 me-3">
+                      {doctorDetails.DoctorCertificateId}
+                    </h5>
                     <Form.Item
                       name="DoctorCertificateId"
                       label="Doctor Certificate Id"
@@ -381,9 +372,6 @@ function DoctorProfilePage() {
                           marginRight: "100px",
                         }}
                       />
-                      <h5 className="mt-3 ms-2">
-                        {doctorDetails.DoctorCertificateId}
-                      </h5>
                     </Form.Item>
                   </Col>
 

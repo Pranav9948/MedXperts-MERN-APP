@@ -241,6 +241,21 @@ router.get("/approveDoctorAccount/:doctorId", async (req, res) => {
       }
     });
 
+
+    Doctors.findByIdAndUpdate(
+      doctorId,
+      {status: "Approved" },
+      function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Updated User : ", docs);
+        }
+      }
+    );
+
+
+
     const userDetails = await Users.find({ _id: userIds });
 
     console.log("m", userDetails);

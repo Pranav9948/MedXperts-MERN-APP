@@ -21,6 +21,8 @@ import {
   adminListDoctorsReducers,
 } from "./redux/reducers/adminReducers";
 
+import {ViewAllApprovedDoctorsReducers} from './redux/reducers/usersReducer'
+
 
 const reducer = combineReducers({
   general: generalReducers,
@@ -32,7 +34,8 @@ const reducer = combineReducers({
   adminUpdateUsers: adminUpdateUsersReducers,
   adminBlockUsers: adminBlockUsersReducers,
   admin_UnBlockUsers: adminunBlockUsersReducers,
-  admin_Doctors_ListShow :adminListDoctorsReducers,
+  admin_Doctors_ListShow: adminListDoctorsReducers,
+  ViewAllApprovedDoctors: ViewAllApprovedDoctorsReducers,
 });
 
 

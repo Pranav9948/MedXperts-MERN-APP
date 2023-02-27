@@ -12,6 +12,7 @@ import { showLoading, HideLoading } from "../../../../redux/actions/generalActio
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 
 function ApplyDoctor() {
@@ -84,7 +85,7 @@ const userInfo= useSelector((state) => state.userInfo.userInfo)
    
 
 
-//////
+
 
 const navigate = useNavigate();
 const dispatch = useDispatch();
@@ -107,17 +108,20 @@ const applyForDoctorAccountAPIRequest = async (values) => {
     dispatch(showLoading());
 
     const { data } = await axios.post(
-      "/api/users/applyfordoctoraccount",
+      "/api/users//apply-for-DoctorAccount",
       {
         ...values,
-        userId:userInfo._id,
+        userId: userInfo._id,
+        timings: [
+          moment(values.timings[0]).format("HH:mm"),
+          moment(values.timings[1]).format("HH:mm"),
+        ],
       },
 
       {
-        headers:{
-
-            Authorization:`Bearer ${localStorage.getItem("token")}`
-        }
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
    
@@ -193,228 +197,114 @@ const applyForDoctorAccountAPIRequest = async (values) => {
               <h4 className="pt-3 ps-3">Apply Doctor Account</h4>
 
               <Form
-                form={form}
-                name="control-hooks"
-                onFinish={onFinish}
                 layout="vertical"
+                onFinish={onFinish}
+                
+                
               >
-                <Row className="mt-4">
-                  <Col md={8}>
+                <h1 className="card-title mt-3">Personal Information</h1>
+                <Row gutter={20}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
+                      required
+                      label="First Name"
                       name="firstName"
-                      label="firstName"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                          height: "100px",
-                        }}
-                      />
+                      <Input placeholder="First Name" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
+                      required
+                      label="Last Name"
                       name="lastName"
-                      label="lastName"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Last Name" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name="email"
-                      label="email"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      required
+                      label="Phone Number"
+                      name="phoneNumber"
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Phone Number" />
                     </Form.Item>
                   </Col>
-                </Row>
-
-                <Row className="mt-2">
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name=" phoneNumber"
-                      label="phoneNumber"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      required
+                      label="Website"
+                      name="website"
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Website" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name="image"
-                      label="image"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
-                    >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
-                    </Form.Item>
-                  </Col>
-
-                  <Col md={8}></Col>
-                </Row>
-
-                <Row className="mt-2">
-                  <Col md={8}>
-                    <Form.Item
+                      required
+                      label="Address"
                       name="address"
-                      label="address"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Address" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                </Row>
+                <hr />
+                <h1 className="card-title mt-3">Professional Information</h1>
+                <Row gutter={20}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name="feePerConsultation"
-                      label="feePerConsultation"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      required
+                      label="Specialization"
+                      name="specialization"
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Specialization" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
+                      required
+                      label="Experience"
                       name="experience"
-                      label="experience"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Experience" type="number" />
                     </Form.Item>
                   </Col>
-                </Row>
-
-                <Row className="mt-2">
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name="department"
-                      label="department"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                      required
+                      label="Fee Per Cunsultation"
+                      name="feePerCunsultation"
+                      rules={[{ required: true }]}
                     >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
+                      <Input placeholder="Fee Per Cunsultation" type="number" />
                     </Form.Item>
                   </Col>
-
-                  <Col md={8}>
+                  <Col span={8} xs={24} sm={24} lg={8}>
                     <Form.Item
-                      name="profession"
-                      label="profession"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
-                    >
-                      <Input
-                        style={{
-                          width: "300px",
-                          marginRight: "100px",
-                        }}
-                      />
-                    </Form.Item>
-                  </Col>
-
-                  <Col md={8}>
-                    <Form.Item
-                  
+                      required
+                      label="Timings"
                       name="timings"
-                      label="time"
-                      
+                      rules={[{ required: true }]}
                     >
-                      <TimePicker.RangePicker />; 
+                      <TimePicker.RangePicker format="HH:mm" />
                     </Form.Item>
                   </Col>
                 </Row>
 
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    Submit
+                <div className="d-flex justify-content-end">
+                  <Button className="primary-button" htmlType="submit">
+                    SUBMIT
                   </Button>
-                </Form.Item>
+                </div>
               </Form>
             </Container>
           </div>

@@ -101,11 +101,12 @@ router.get("/getUserInfoById", protect, async (req, res) => {
   }
 });
 
-router.post("/apply-for-DoctorAccount", protect, async (req, res) => {
+router.post("/apply-for-DoctorAccount", async (req, res) => {
   try {
-    console.log("x", req.body);
+    console.log("224466");
+    console.log("x", req.body.values);
     const newDoctor = new Doctors({
-      ...req.body, 
+      ...req.body.values, 
       status: "pending",
       userId: req.userId,
     });
@@ -245,6 +246,53 @@ router.get("/getAdminDetails",async(req,res)=>{
 });
 
 
+
+// usersSide getallApprovedDoctors
+ 
+
+router.get('/getAllApprovedDoctors',async(req,res)=>{
+
+  try{
+
+const getApprovedDoctors=await Doctors.find({status:"Approved"})
+
+   console.log("8777",getApprovedDoctors)
+
+   res.status(200).send({message:"fetching doctor details successfull",success:true,getApprovedDoctors})
+
+  }
+
+  catch(err){
+
+    res.status(500).send({message:"cannot fetch approved doctors",success:false,err})
+  }
+})
+
+
+router.get("/getDoctorDetails/:Doctorid", async (req, res) => {
+
+
+  try {
+
+    const doctorId=req.params.Doctorid
+
+    const getDoctorDetailz = await Doctors.find({_id:doctorId});
+
+    console.log("8777", getDoctorDetailz);
+
+    res
+      .status(200)
+      .send({
+        message: "fetching doctor details successfull",
+        success: true,
+        getDoctorDetailz,
+      });
+  } catch (err) {
+    res
+      .status(500)
+      .send({ message: "cannot fetch approved doctors", success: false, err });
+  }
+});
 
 
 

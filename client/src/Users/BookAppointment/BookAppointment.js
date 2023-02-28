@@ -7,19 +7,20 @@ import Col from "react-bootstrap/Col";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ListGroup from "react-bootstrap/ListGroup";
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 import { TimePicker } from "antd";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
 
+import { toast } from "react-hot-toast";
 
 function BookAppointment() {
   const { id } = useParams();
 
   const [doctorDetailz, setDoctorDetailz] = useState([]);
-  const [isAvailable,setIsAvailable]=useState(false)
-  const [date,setDate]=useState()
-  const [selectedTimings,setSelectedTimings]=useState()
+  const [isAvailable, setIsAvailable] = useState(false);
+  const [date, setDate] = useState();
+  const [selectedTimings, setSelectedTimings] = useState();
 
   useEffect(() => {
     getDoctorDetailsApiRequest(id);
@@ -29,12 +30,44 @@ function BookAppointment() {
     const { data } = await axios.get(`/api/users/getDoctorDetails/${id}`);
 
     setDoctorDetailz(data.getDoctorDetailz);
-    console.log("2222",doctorDetailz);
+    console.log("2222", doctorDetailz);
   };
 
-const checkAvailiabiltyApi=async()=>{
+  const checkAvailiabiltyApi = async () => {
+    const { data } = await axios.post(
+      `/api/users/check-booking-aviliabilty/${id}`,
+      { date, selectedTimings }
+    );
 
-    const {data}= await axios.post('/api/users/checkAvialiabilty',{date,selectedTimings})
+    console.log("444", data);
+
+    if (data.success) {
+      toast.success(data.message);
+      setIsAvailable(true)
+    } else {
+      toast.error(data.message);
+    }
+  };
+
+
+const booknow=async()=>{
+
+ const { data } = await axios.post(
+   `/api/users/bookAppointmentByUser/${id}`,
+   { date, selectedTimings }
+  
+ );
+
+    console.log("444", data);
+
+    if (data.success) {
+      toast.success(data.message);
+      setIsAvailable(true)
+    } else {
+      toast.error(data.message);
+    }
+
+     setIsAvailable(false);
 }
 
 
@@ -71,7 +104,19 @@ const checkAvailiabiltyApi=async()=>{
               }}
             />
             <hr></hr>
-            <Button variant="primary" onClick={()=>checkAvailiabiltyApi()}>Check Availabilty</Button>{" "}
+            <Button variant="primary" onClick={() => checkAvailiabiltyApi()}>
+              Check Availabilty
+            </Button>{" "}
+
+{
+
+     isAvailable && <Button variant="primary" className="mt-3 mb-3" onClick={()=>booknow}>
+              Book Now
+            </Button>
+}
+
+
+
           </Col>
 
           <Col md={3}>

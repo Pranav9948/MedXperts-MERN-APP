@@ -19,7 +19,7 @@ const doctorSchema = new mongoose.Schema(
 
     email: {
       type: String,
-      required: true,  
+      required: true,
     },
 
     address: {
@@ -59,14 +59,19 @@ const doctorSchema = new mongoose.Schema(
       required: true,
     },
 
-    timings: {   
+    timings: {
       type: Array,
       required: true,
     },
 
     status: {
       type: String,
-      default: "pending",  
+      default: "pending",
+    },
+
+    userIds: {
+      type: String,
+      default: "pending",
     },
   },
 
